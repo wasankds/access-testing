@@ -11,7 +11,12 @@ import path  from 'path';
 
 //=== กรณีไฟล์อยู่ในโฟลเดอร์โปรเจกต์ - Relative path
 const rootDir = path.resolve();
-const dbFilePath = path.join(rootDir, 'files', 'WK_ACCDB.accdb');
+
+// accDb
+const dbFilePath = path.join(rootDir, 'files', 'WK_MDB.mdb');
+
+// mdb
+// const dbFilePath = path.join(rootDir, 'files', 'WK_ACCDB.accdb');
 
 //=== 
 const msDriver = '{Microsoft Access Driver (*.mdb, *.accdb)}'
@@ -19,12 +24,13 @@ const connectionString = `Driver=${msDriver};DBQ=${dbFilePath};`;
 async function readAccdb() {
   let connection = await odbc.connect(connectionString);
   try {
-    // const result = await connection.query('SELECT * FROM Customers');
+    const result = await connection.query('SELECT * FROM member');
     // console.log('result ===> ' , result);
+    const rows = result.filter(item => typeof item.ID !== 'undefined');
+    console.log('rows ===> ' , rows);
 
 
-    // const result = await connection.query('SELECT * FROM qryCustomerList');
-    const result = await connection.query('SELECT * FROM qryrptEmployeeEmailList');
+    // const result = await connection.query('SELECT * FROM qryrptEmployeeEmailList');
     // console.log('result ===> ', result);
 
   } catch (error) {
