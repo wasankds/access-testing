@@ -6,17 +6,19 @@
 
 import odbc from 'odbc';
 import path  from 'path';
-// //=== กรณีไฟล์ไม่อยู่ในโฟลเดอร์โปรเจกต์ - Absolute path
+
+
+//=== กรณีไฟล์ไม่อยู่ในโฟลเดอร์โปรเจกต์ - Absolute path
 // const dbFilePath = "C:/Users/wasankds/Documents/Database1.accdb";
+// "C:\Users\wasankds\Documents\wk.mdb"
+const dbFilePath = "C:/Users/wasankds/Documents/wk.mdb";
 
-//=== กรณีไฟล์อยู่ในโฟลเดอร์โปรเจกต์ - Relative path
-const rootDir = path.resolve();
-
-// accDb
-const dbFilePath = path.join(rootDir, 'files', 'WK_MDB.mdb');
-
-// mdb
-// const dbFilePath = path.join(rootDir, 'files', 'WK_ACCDB.accdb');
+// //=== กรณีไฟล์อยู่ในโฟลเดอร์โปรเจกต์ - Relative path
+// const rootDir = path.resolve();
+// //=== accDb
+// const dbFilePath = path.join(rootDir, 'files', 'WK_MDB.mdb');
+// //=== mdb
+// // const dbFilePath = path.join(rootDir, 'files', 'WK_ACCDB.accdb');
 
 //=== 
 const msDriver = '{Microsoft Access Driver (*.mdb, *.accdb)}'
